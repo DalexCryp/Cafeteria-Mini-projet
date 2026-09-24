@@ -26,12 +26,12 @@ def calcular_preco_unitario(bebida, tamanho):
             return 8.50
 
 
-def calcular_total(bebida, tamanho, quantidade, aluno_fiap):
+def calcular_total(bebida, tamanho, quantidade, aluno):
     preco_unitario = calcular_preco_unitario(bebida, tamanho)
     valor_sem_desconto = preco_unitario * quantidade
     desconto = 0
 
-    if aluno_fiap == "sim" and valor_sem_desconto > 15:
+    if aluno == "sim" and valor_sem_desconto > 15:
         desconto = valor_sem_desconto * 0.10
 
     valor_final = valor_sem_desconto - desconto
@@ -54,11 +54,11 @@ def mostrar_resumo(nome, bebida, tamanho, quantidade, valor_sem_desconto, descon
 
 
 nome = input("Digite o nome do cliente: ")
-bebida = input("Digite a bebida (cafe, capuccino, chocolate): ")
-tamanho = input("Digite o tamanho (P, M, G): ")
+bebida = input("Digite a bebida (cafe, capuccino, chocolate): ") .upper()
+tamanho = input("Digite o tamanho (P, M, G): ") .upper()
 quantidade = int(input("Digite a quantidade: "))
-aluno_fiap = input("É aluno FIAP? (sim ou nao): ")
+aluno= input("É aluno? (sim ou nao): ") .upper()
 
-valor_sem_desconto, desconto, valor_final = calcular_total(bebida, tamanho, quantidade, aluno_fiap)
+valor_sem_desconto, desconto, valor_final = calcular_total(bebida, tamanho, quantidade, aluno)
 
 mostrar_resumo(nome, bebida, tamanho, quantidade, valor_sem_desconto, desconto, valor_final)
